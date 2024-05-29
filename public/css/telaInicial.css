@@ -1,0 +1,52 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+.container {
+  /*tamanho*/
+  width: 100w;
+  height: 100vh;
+  /*organização dos elementos filhos*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*cor*/
+  background-image: url(../assets/piano2.00\ \(1\).png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.header{
+  /*tamanho*/
+  width: 100%;
+  /*borda*/
+  border-bottom: 2px solid white;
+  /*organização dos elementos filhos*/
+  display: flex;
+  justify-content:center ;
+  align-items: center;
+}
+.titulo{
+  color: white;
+
+}
+
+.lista-de-botoes {
+  /*tamanho*/
+  width: 40%;
+  height: 30px;
+  padding: 5px;
+  /*organização dos elementos filhos*/
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.botao-pag-inicial{
+  /*cor*/
+  background-color: transparent;
+  color: white;
+  /*borda*/
+  border: 0px;
+}

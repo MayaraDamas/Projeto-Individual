@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/TelaLogin.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="header">
+        logo
+    </header>
+    <container class="container">
+
+        <section class="input_login">
+            <h1 class="titulo-input-login">BEM-VINDO</h1>
+            <br>
+            <div class="div-inputs">
+                <section class="sessao inputs">
+                    <div class="grupo-input">
+                        <b>Email:</b>
+                        <input class="input email" id="input_email" tabindex="2">
+                        <span class="span-avisos" id="span_avisoEmail"></span>
+                    </div>
+                    <br>
+                    <div class="grupo-input">
+                        <b>Senha:</b>
+                        <input type="password" class="input senha" id="input_senha" tabindex="3">
+                        <span class="span-avisos" id="span_avisoSenha"></span>
+                    </div>
+                    <br>
+                </section>
+            </div>
+            <span class=" geral" id="span_avisoCampos"></span>
+
+            <button class="BotaoLogin" onclick="Login()" tabindex="7">LOG IN</button>
+
+        </section>
+        <!--<div class="imagemCadastro">
+            <img class="ImagemPiano" src="../img/ImagemPianoGoogle.jpg">
+        </div>-->
+    </container>
+
+</body>
+
+</html>
+
+<script>
+    function Login() {
+        const Email = input_email.value;
+        const Senha = input_senha.value;
+
+        if (Email == "" || Senha == "") {
+
+            alert("Preencha todos os campos")
+
+        } else {
+
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: Email,
+                    senhaServer: Senha
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.ID_USUARIO = json.id;
+                       
+
+                        setTimeout(function () {
+                            window.location = "telaInicial.html";
+                        }, 1000); // apenas para exibir o loading
+
+                    });
+
+                } else {
+
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+            return false;
+        }
+    }
+
+</script>

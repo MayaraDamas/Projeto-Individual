@@ -1,0 +1,103 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    /*Fundo*/
+    background-image: url(../assets/FundoLoginTecla.avif);
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: -1;
+}
+
+.container {
+    /*tamanho*/
+    width: 100%;
+    height: 100%;
+    /*organização de elementos filhos*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.input_login {
+    /*tamanho*/
+    width: 30%;
+    height: 70%;
+    /*bordas*/
+    border: 2px solid black;
+    border-radius: 20px;
+    /*organização dos elementos filhos*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*Fundo*/
+    background-color: white;
+}
+
+.div-inputs {
+    width: 50%;
+}
+
+.grupo-input b {
+    /*organização dos elementos filhos*/
+    display: block;
+    color: black;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.grupo-input input {
+    /*tamanho*/
+    width: 100%;
+    height: 40%;
+    padding: 5px 10px;
+    /*borda*/
+    border: none;
+    border-bottom: 2px solid black;
+    /*detalhes*/
+    box-sizing: border-box;
+
+}
+
+.sessao {
+    display: flex;
+    flex-direction: column;
+}
+
+/*.imagemCadastro{
+ /*tamanho
+ width: 70%;
+ height: 100%;
+ padding: 5px;
+ /*organização dos elementos filhos
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ 
+ /*fundo*/
+/* background-image: url(../img/ImagemPianoGoogle.jpg); 
+ background-repeat: no-repeat;
+ 
+}
+
+.ImagemPiano{
+    width: 800px;
+    height: 100%;
+    /*borda
+     border-radius: 30px; 
+}*/
+
+.BotaoLogin {
+    width: 50%;
+    height: 30px;
+    margin: 10px;
+    /*Borda*/
+    border-radius: 8px;
+    /*organização*/
+    margin-top: 15px;
+    /*cor*/
+    background-color: black;
+    color: white;
+}
