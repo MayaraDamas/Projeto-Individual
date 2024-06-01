@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 
     <meta charset="UTF-8">
@@ -8,37 +9,60 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Document</title>
 </head>
+
 <body>
-    <nav class="menu-lateral">
-        <div class="expandir">
-            <i class="bi bi-list"></i>
+    <div class="quiz-container">
+        <nav class="menu-lateral">
+            <div class="expandir">
+                <i class="bi bi-list"></i>
+            </div>
+            <ul>
+                <li class="item-menu">
+                    <a href="a">
+                        <span class="icone"><i class="bi bi-house"></i></span>
+                        <span class="txt-link">Inicio</span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="a">
+                        <span class="icone"><i class="bi bi-controller"></i></span>
+                        <span class="txt-link">Quiz</span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="a">
+                        <span class="icone"><i class="bi bi-columns-gap"></i></span>
+                        <span class="txt-link">Dashboard</span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="a">
+                        <span class="icone"><i class="bi bi-person"></i></span>
+                        <span class="txt-link">Perfil</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="conteudo-quiz">
+            <div class="caixa-quiz">
+                <span class="titulo-quiz">É hora do Quiz!</span>
+                <div class="questoes">
+                    <span class="pergunta">Pergunta aqui</span>
+                    <div class="respostas">
+                        <button class="resposta botao">A</button>
+                        <button class="resposta botao">B</button>
+                        <button class="resposta botao">C</button>
+                        <button class="resposta botao">D</button>
+                    </div>
+                </div>
+                <div class="controles-container">
+                    <button class="ComecarQuiz botao">Começar Quiz</button>
+                    <button class="ProximaQuestao botao">Próxima Questão</button>
+                </div>
+            </div>
         </div>
-        <ul>
-            <li class="item-menu">
-            <a href="a">
-                <span class="icone"><i class="bi bi-house"></i></span>
-                <span class="txt-link">Inicio</span>
-            </a>
-        </li>
-        <li class="item-menu">
-            <a href="a">
-                <span class="icone"><i class="bi bi-controller"></i></span>
-                <span class="txt-link">Quiz</span>
-            </a>
-        </li>
-        <li class="item-menu">
-            <a href="a">
-                <span class="icone"><i class="bi bi-columns-gap"></i></span>
-                <span class="txt-link">Dashboard</span>
-            </a>
-        </li>
-        <li class="item-menu">
-            <a href="a">
-                <span class="icone"><i class="bi bi-person"></i></span>
-                <span class="txt-link">Perfil</span>
-            </a>
-        </li>
-        </ul>
-    </nav>
+    </div>
 </body>
+
 </html>
