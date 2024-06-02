@@ -46,7 +46,7 @@
 
         <div class="conteudo-quiz">
             <div class="caixa-quiz">
-                <span class="titulo-quiz">É hora do Quiz!</span>
+                <h1>É hora do Quiz!</h1>
                 <div class="questoes hide">
                     <span class="pergunta">Pergunta aqui</span>
                     <div class="respostas">
@@ -72,20 +72,25 @@
     const QuestoesQuiz = document.querySelector(".questoes")
     const RespostaQuiz = document.querySelector(".respostas")
     const PerguntaText = document.querySelector(".pergunta")
+    const ProximaQuestaoBotao = document.querySelector(".ProximaQuestao")
 
     Comecar_Quiz_Botao.addEventListener("click", ComecarJogo)
+    ProximaQuestaoBotao.addEventListener("click", displayProximaQuestao)
 
     let PerguntaAtualIndex = 0
+    let TotalRespostaCorreta = 0
 
-    function ComecarJogo(){
+    function ComecarJogo() {
         Comecar_Quiz_Botao.classList.add("hide")
         QuestoesQuiz.classList.remove("hide")
         displayProximaQuestao()
     }
 
-    function displayProximaQuestao(){
-        while (RespostaQuiz.firstChild){
-            RespostaQuiz.removeChild(RespostaQuiz.firstChild)
+    function displayProximaQuestao() {
+        resetState()
+
+        if (questions.length == PerguntaAtualIndex) {
+            return JogoFinalizado()
         }
 
         PerguntaText.textContent = questions[PerguntaAtualIndex].question
@@ -93,16 +98,81 @@
             const NovaResposta = document.createElement("button")
             NovaResposta.classList.add("botao", "resposta")
             NovaResposta.textContent = resposta.text
-            if(resposta.correct){
+            if (resposta.correct) {
                 NovaResposta.dataset.correct = resposta.correct
             }
 
             RespostaQuiz.appendChild(NovaResposta)
 
-            NovaResposta.addEventListener("click", selectAns)
+            NovaResposta.addEventListener("click", selectAnsewer)
         })
     }
 
+    function resetState() {
+        while (RespostaQuiz.firstChild) {
+            RespostaQuiz.removeChild(RespostaQuiz.firstChild)
+        }
+
+        document.body.removeAttribute("class")
+        ProximaQuestaoBotao.classList.add("hide")
+    }
+
+
+    function selectAnsewer(event) {
+        const RespostaClicada = event.target
+
+        if (RespostaClicada.dataset.correct) {
+            document.body.classList.add("correct")
+            TotalRespostaCorreta++
+        } else {
+            document.body.classList.add("incorrect")
+        }
+
+        document.querySelectorAll(".resposta").forEach(button => {
+            if (button.dataset.correct) {
+                button.classList.add("correct")
+            } else {
+                button.classList.add("incorrect")
+            }
+
+            button.disabled = true
+        })
+
+        ProximaQuestaoBotao.classList.remove("hide")
+        PerguntaAtualIndex++
+    }
+
+    function JogoFinalizado() {
+        const TotalQuestoes = questions.length
+        const performance = Math.floor(TotalRespostaCorreta * 100 / TotalQuestoes)
+
+        let Mensagem = ""
+
+        switch (true) {
+            case (performance >= 90):
+                Mensagem = "Excelente"
+                break
+            case (performance >= 70):
+                Mensagem = "Muito Bom!"
+                break
+            case (performance >= 50):
+                Mensagem = "Bom"
+                break
+            default:
+                Mensagem = "Pode Melhorar"
+        }
+        QuestoesQuiz.innerHTML =
+            `
+       <p>
+        Você Acertou ${TotalRespostaCorreta} de ${TotalQuestoes} questões!
+        <br>
+        <span>Resultado:${Mensagem}</span>
+        </p>
+        <button onclick=window.location.reload()>
+            Refazer Teste
+         </button>
+       `
+    }
 
 
 
@@ -110,79 +180,64 @@
     const questions = [
         {
             question: "Um piano de cauda e vertival tem quantas cordas, respectivamente?",
-            answers:[
-                { text: "240 e 230", correct:false},
-                { text: "230 e 230", correct:true},
-                { text: "300 e 220", correct:false},
-                { text: "230 e 240", correct:false},
+            answers: [
+                { text: "240 e 230", correct: false },
+                { text: "230 e 230", correct: true },
+                { text: "300 e 220", correct: false },
+                { text: "230 e 240", correct: false },
 
             ]
         },
         {
             question: "Quem foi o inventor do piano?",
-            answers:[
-                { text: "Scipione ", correct:false},
-                { text: "Ludwing Van Beethoven", correct:false},
-                { text: "Johannes Zumpe", correct:false},
-                { text: "Bartolomeo Cristofor", correct:true},
+            answers: [
+                { text: "Scipione ", correct: false },
+                { text: "Ludwing Van Beethoven", correct: false },
+                { text: "Johannes Zumpe", correct: false },
+                { text: "Bartolomeo Cristofor", correct: true },
 
             ]
         },
         {
             question: "Quantos metros piano mais longo do mundo tem de comprimento?",
-            answers:[
-                { text: "17.6 metros de comprimento ", correct:false},
-                { text: "19 metros de comprimento", correct:false},
-                { text: "18 metros de comprimento", correct:true},
-                { text: "11 metros de comprimento", correct:false},
+            answers: [
+                { text: "17.6 metros de comprimento ", correct: false },
+                { text: "19 metros de comprimento", correct: false },
+                { text: "18 metros de comprimento", correct: true },
+                { text: "11 metros de comprimento", correct: false },
 
             ]
         },
         {
             question: "Quantos teclas tem um piano de concerto?",
-            answers:[
-                { text: "76", correct:false},
-                { text: "88", correct:true},
-                { text: "100 ", correct:false},
-                { text: "72 ", correct:false},
+            answers: [
+                { text: "76", correct: false },
+                { text: "88", correct: true },
+                { text: "100 ", correct: false },
+                { text: "72 ", correct: false },
 
             ]
         },
         {
             question: "Termo italino que significa 'muito suave, o qual indica que uma passagem musical deve ser tocada suavemente'?",
-            answers:[
-                { text: "Fortissimo", correct:false},
-                { text: "Legato", correct:false},
-                { text: "Staccato", correct:false},
-                { text: "Pianissimo", correct:true},
+            answers: [
+                { text: "Fortissimo", correct: false },
+                { text: "Legato", correct: false },
+                { text: "Staccato", correct: false },
+                { text: "Pianissimo", correct: true },
 
             ]
         },
         {
             question: "Quantas teclas representam as notas naturias (brancas) e os sustenidos e bemóis (pretas), respectivamente?",
-            answers:[
-                { text: "52 e 36", correct:true},
-                { text: "44 e 44", correct:true},
-                { text: "36 e 52 ", correct:false},
-                { text: "54 e 34", correct:false},
+            answers: [
+                { text: "52 e 36", correct: true },
+                { text: "44 e 44", correct: false },
+                { text: "36 e 52 ", correct: false },
+                { text: "54 e 34", correct: false },
 
             ]
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     ]
 </script>

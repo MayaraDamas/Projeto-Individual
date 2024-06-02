@@ -112,7 +112,7 @@ ul li.item-menu a .icone>i {
     gap: 24px;
     /*Borda*/
     border: 2px solid black;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .questoes{
@@ -150,7 +150,7 @@ ul li.item-menu a .icone>i {
     padding: 0 32px;
     /*borda*/
     border: 0;
-    border-radius: 20px;
+    border-radius: 10px;
     /*cor*/
     background-color: black;
     color: white;
@@ -166,4 +166,12 @@ ul li.item-menu a .icone>i {
 
 .hide{
     display: none;
+}
+
+.correct{
+   color: green;
+}
+
+.incorrect{
+    color: red;
 }
