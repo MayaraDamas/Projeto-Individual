@@ -86,10 +86,10 @@
   color:#6B0F0F;
 }
 
-.sessao-historia-piano{
+.sessao-sobre-piano{
    /*Tamanho*/
    width: 100%;
-   height: 95vh;
+   height: 90vh;
    /*Organização de elementos filhos*/
    display: flex;
    flex-direction: row;
@@ -117,19 +117,22 @@
 
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  /* justify-content: center */
   align-items: center;
 }
 
 .titulo-sobre-piano{
+
   display: flex;
   flex-direction: column;
   gap: 30px;
+  
 }
 
 
 .sobre{
   font-size: 60px;
+  display: flex;
 }
 
 .o{
@@ -140,7 +143,55 @@
   font-size: 60px;
 }
 
-.primeiro-paragrafo-sobre{
+.paragrafo-sobre-piano{
   display: flex;
-  padding: 50px;
+  flex-direction: column;
+  gap: 10px;
+
 }
+.primeiro-paragrafo-sobre{
+  /*tamanho*/
+  width: 100%;
+  padding: 30px;
+  /*organização*/
+  display: flex;
+  /*cor*/
+  background-color: #000;
+  color: #fff;
+  /*borda*/
+  border-radius: 20px;
+  /*fonte*/
+  font-size: 20px;
+  
+}
+
+.segundo-paragrafo-sobre{
+ /*tamanho*/
+ width: 100%;
+ padding: 30px;
+ /*organização*/
+ display: flex;
+ /*cor*/
+ background-color: #000;
+ color: #fff;
+ /*borda*/
+ border-radius: 20px;
+ /*fonte*/
+ font-size: 20px;
+}
+
+.terceiro-paragrafo-sobre{
+ /*tamanho*/
+ width: 100%;
+ padding: 30px;
+ /*organização*/
+ display: flex;
+ /*cor*/
+ background-color: #000;
+ color: #fff;
+ /*borda*/
+ border-radius: 20px;
+ /*fonte*/
+ font-size: 20px;
+}
+
