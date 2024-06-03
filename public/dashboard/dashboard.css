@@ -8,7 +8,7 @@ body {
     height: 100vh;
 }
 
-.quiz-container {
+.dashboard-container {
     /*Tamanho*/
     width: 100%;
     height: 100vh;
@@ -82,4 +82,80 @@ ul li.item-menu a .txt-link {
 ul li.item-menu a .icone>i {
     font-size: 30px;
     margin-left: 5px;
+}
+
+.caixa-conteudo{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-end;
+
+    margin-left: 230px;
+}
+
+.sessao-conteudo-dashboard {
+    /*Tamanho*/
+    width: 95%;
+    height: 95%;
+    /*border*/
+    border: 2px solid black;
+    /*Organização de elementos filhos*/
+    display: flex;
+    flex-direction:column;
+   
+    /*espaçamento*/
+    margin-top: 30px;
+    
+}
+
+.sessao-indicadores {
+    /*Tamanho*/
+    width: 99%;
+    height: 22%;
+    /*Organização de elementos filhos*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   
+    
+}
+
+.Porcentagem-Acerto{
+    /*tamanho*/
+    width: 20%;
+    /*espaçamento*/
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: red;
+}
+
+.Maior-numero-Pontos{
+     /*tamanho*/
+     width: 20%;
+     /*espaçamento*/
+     margin-top: 10px;
+     margin-left: 10px;
+     background-color: blue;
+}
+
+.Menor-numero-Pontos{
+     /*tamanho*/
+     width: 20%;
+     /*espaçamento*/
+     margin-top: 10px;
+     margin-left: 10px;
+     background-color: yellow;
+
+}
+
+.Grafico-Acertos{
+/*tamanho*/
+width: 70%;
+/*Borda*/
+border: 2px solid #7000FF;
+border-radius: 10px;
+/*espaçamento*/
+margin-top: 10px;
 }

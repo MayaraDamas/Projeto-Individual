@@ -119,7 +119,6 @@
 .titulo-sobre-piano{
   display: flex;
   flex-direction: column;
-  margin-right: 1000px;
   gap: 30px;
 }
 
@@ -136,6 +135,3 @@
   font-size: 60px;
 }
 
-.primeiro-paragrafo-sobre{
-
-}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Document</title>
 </head>
+
 <body>
-    <div class="quiz-container">
+    <div class="dashboard-container">
         <nav class="menu-lateral">
             <div class="expandir">
                 <i class="bi bi-list"></i>
@@ -41,6 +43,32 @@
             </ul>
         </nav>
 
-        
+        <div class="caixa-conteudo">
+            <div class="sessao-conteudo-dashboard">
+                <section class="sessao-indicadores">
+                    <div class="Porcentagem-Acerto">
+                        <h2 class="titulo-porcentagem-acerto">Você Acertou:</h2>
+                        <p class="conteudo-indicador" id="p_KPI_Porcentg_Acerto">1</p>
+                    </div>
+                    <div class="Maior-numero-Pontos">
+                        <h2 class="titulo-maior-pontos">Você Acertou:</h2>
+                        <p class="conteudo-indicador" id="p_KPI_Maior_Pontos">1</p>
+                    </div>
+                    <div class="Menor-numero-Pontos">
+                        <h2 class="titulo-menor-pontos">Você Acertou:</h2>
+                        <p class="conteudo-indicador" id="p_KPI_Menor_Pontos">1</p>
+                    </div>
+                </section>
+             <!--Grafico de Acertos-->
+                <div class="Grafico-Acertos">
+                    <h3 class="titulo-grafico">Pontuação</h3>
+                    <section class="sessao-grafico-acertos">
+                        <canvas id="grafico-acertos" style="height: 100%; width: 80%;"></canvas>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
