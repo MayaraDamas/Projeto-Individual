@@ -114,6 +114,11 @@
   /*Tamanho*/
   width: 50%;
   padding: 0px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .titulo-sobre-piano{
@@ -135,3 +140,7 @@
   font-size: 60px;
 }
 
+.primeiro-paragrafo-sobre{
+  display: flex;
+  padding: 50px;
+}

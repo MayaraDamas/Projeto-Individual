@@ -12,4 +12,12 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.post("/CalcularPontuacao", function (req, res) {
+    usuarioController.CalcularPontuacao(req, res);
+});
+
+router.get("/obterDados", function (req, res) {
+    usuarioController.obterDados(req, res);
+});
+
 module.exports = router;

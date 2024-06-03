@@ -18,23 +18,18 @@
             </div>
             <ul>
                 <li class="item-menu">
-                    <a href="a">
-                        <span class="icone"><i class="bi bi-house"></i></span>
-                        <span class="txt-link">Inicio</span>
-                    </a>
-                </li>
-                <li class="item-menu">
-                    <a href="a">
-                        <span class="icone"><i class="bi bi-controller"></i></span>
-                        <span class="txt-link">Quiz</span>
-                    </a>
-                </li>
-                <li class="item-menu">
-                    <a href="a">
+                    <a href="../dashboard/dashboard.html">
                         <span class="icone"><i class="bi bi-columns-gap"></i></span>
                         <span class="txt-link">Dashboard</span>
                     </a>
                 </li>
+                <li class="item-menu">
+                    <a href="../quiz/index.html">
+                        <span class="icone"><i class="bi bi-controller"></i></span>
+                        <span class="txt-link">Quiz</span>
+                    </a>
+                </li>
+            
                 <li class="item-menu">
                     <a href="a">
                         <span class="icone"><i class="bi bi-person"></i></span>
@@ -172,6 +167,8 @@
             Refazer Teste
          </button>
        `
+
+       CalcularPontuacao()
     }
 
 
@@ -240,4 +237,35 @@
         },
 
     ]
+
+    function CalcularPontuacao(){
+        console.log("Esse é o nome do usuário:")
+        console.log(sessionStorage.NOME_USUARIO)
+     fetch(`/usuarios/CalcularPontuacao?idUsuario=${sessionStorage.getItem("ID_USUARIO")}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        usuarioIdServer:sessionStorage.getItem('ID_USUARIO'),
+        idQuizServer: 1,
+        pontuacaoServer: TotalRespostaCorreta
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+
+      });
+
+    }
 </script>

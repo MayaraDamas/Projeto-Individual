@@ -20,7 +20,7 @@ function autenticar(req, res) {
                         console.log(resultadoAutenticar);
 
                                     res.json({
-                                        id: resultadoAutenticar[0].id,
+                                        idUsuario: resultadoAutenticar[0].idUsuario,
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
@@ -78,8 +78,80 @@ function cadastrar(req, res) {
             );
     }
 }
+function CalcularPontuacao(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+   var usuario = req.body.usuarioIdServer;
+   var quiz = req.body.idQuizServer;
+   var pontuacao = req.body.pontuacaoServer;
+
+    // Faça as validações dos valores
+    if (usuario == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (quiz == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (pontuacao == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+
+    }else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.CalcularPontuacao(usuario, quiz, pontuacao)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function obterDados(req, res){
+
+    usuarioModel.obterDados()
+
+        .then(function(resultado){
+
+           
+
+            if(resultado.length > 0){
+
+                res.json(resultado);
+
+            }else{
+
+                req.status(404).send("Nenhum resultado salvo");
+
+            }
+
+        })
+
+ 
+
+        .catch(function(erro){
+
+            console.error("Erro ao obter o resultado", erro);
+
+            res.status(500).json({error: "Erro interno do servidor"});
+
+        });
+
+ 
+
+}
+
+ 
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    CalcularPontuacao,
+    obterDados
 }
