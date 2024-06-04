@@ -45,9 +45,19 @@ function obterDados() {
     return database.executar(instrucaoSql);
 }
 
+function CapturarPontuacao(idUsuario){
+    var instrucaoSql = `
+    select Pontuacao from Pontuacao where fkUsuario = ${idUsuario} order by idPontuacao desc limit 5;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
 module.exports = {
     autenticar,
     cadastrar,
     CalcularPontuacao,
-    obterDados
+    obterDados,
+    CapturarPontuacao
 };

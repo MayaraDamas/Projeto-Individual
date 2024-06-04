@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/telaCadastro.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <header class="header">
+    logo
+  </header>
+  <container class="container">
+
+    <section class="input_cadastro">
+      <h1 class="titulo-input-cadastro">CADASTRE - SE</h1>
+      <br>
+      <div class="div-inputs">
+        <section class="sessao inputs">
+          <div class="grupo-input">
+            <b> Nome:</b>
+            <input class="input nome" id="input_nome" tabindex="1">
+            <span class="span-avisos"></span>
+          </div>
+          <br>
+          <div class="grupo-input">
+            <b>Email:</b>
+            <input class="input email" id="input_email" tabindex="2">
+            <span class="span-avisos" id="span_avisoEmail"></span>
+          </div>
+          <br>
+          <div class="grupo-input">
+            <b>Senha:</b>
+            <input type="password" class="input senha" id="input_senha" tabindex="3">
+            <span class="span-avisos" id="span_avisoSenha"></span>
+          </div>
+          <br>
+          <div class="grupo-input">
+            <b>Confirmação de senha:</b>
+            <input type="password" class="input senha" id="input_confirmacaoSenha" tabindex="4">
+            <span class="span-avisos" id="span_avisoConfirmacaoSenha"></span>
+          </div>
+          <br>
+
+        </section>
+      </div>
+      <span class=" geral" id="span_avisoCampos"></span>
+
+      <button class="BotaoCadastrar" onclick="cadastrar()" tabindex="7">CADASTRE-SE</button>
+
+      <b class="PerguntaCadastro">Já possui cadastro?</b>
+
+      <br>
+      <button class="BotaoPossuiCadastro" onclick="PossuiCadastro()" tabindex="8">Fazer Login</button>
+    </section>
+    <div class="imagemCadastro">
+      <img class="ImagemPiano" src="./assets/ImagemPianoGoogle.jpg">
+    </div>
+  </container>
+
+</body>
+
+</html>
+
+<script>
+  function cadastrar() {
+    const Nome = input_nome.value
+    const Email = input_email.value;
+    const Senha = input_senha.value;
+    const ConfirmacaoDeSenha = input_confirmacaoSenha.value;
+
+    if (Nome != "" && Email != "" && Senha != "" && ConfirmacaoDeSenha != "") {
+
+      // Email terá que ter um @ e um .
+      const INDICE_ARROBA = Email.indexOf("@");
+      const INDICE_PONTO = Email.indexOf(".");
+
+
+      span_avisoEmail.style.color = 'transparent';
+      span_avisoSenha.style.color = 'transparent';
+      span_avisoConfirmacaoSenha.style.color = 'transparent';
+
+      // Senha terá que ter pelo menos: 8 caracteres, 1 número, uma letra maiúscula 
+      if (INDICE_ARROBA == -1 || INDICE_PONTO == -1) {
+        span_avisoEmail.innerHTML = "Email inválido";
+        span_avisoEmail.style.color = 'red';
+
+      } else {
+        if (Senha.length < 8) {
+          span_avisoSenha.innerHTML = "A senha deve ter pelo menos 8 caracteres";
+          span_avisoSenha.style.color = 'red';
+
+        } else {
+          let existeNumero = false;
+
+          for (let numero = 0; numero <= 9; numero++) {
+            const INDICE_NUMERO = Senha.indexOf(`${numero}`);
+
+            if (INDICE_NUMERO != -1) {
+              existeNumero = true;
+
+              numero = 10;
+            }
+          }
+
+          if (existeNumero == true) {
+
+            let existeLetraMaiuscula = false;
+            let senha_replace = Senha;
+
+            senha_replace = senha_replace.replace(/\d+/ig, "")
+
+            for (let posicao = 0; posicao < senha_replace.length; posicao++) {
+              const LETRA_MAIUSCULA = senha_replace[posicao];
+
+              if (LETRA_MAIUSCULA == LETRA_MAIUSCULA.toUpperCase()) {
+                posicao = senha_replace.length;
+                existeLetraMaiuscula = true;
+              }
+            }
+
+            if (existeLetraMaiuscula == false) {
+              span_avisoSenha.innerHTML = "A senha deve conter uma letra maiúscula";
+              span_avisoSenha.style.color = 'red';
+
+
+            } else {
+              span_avisoConfirmacaoSenha.innerHTML = "";
+
+              if (Senha != ConfirmacaoDeSenha) {
+
+                span_avisoConfirmacaoSenha.innerHTML = "As senhas não conferem";
+                span_avisoConfirmacaoSenha.style.color = 'red';
+
+              }
+            }
+          } else {
+            span_avisoSenha.innerHTML = "A senha deve conter pelo menos um número";
+            span_avisoSenha.style.color = 'red';
+
+            
+          }
+
+        }
+      }
+    } else {
+      span_avisoCampos.innerHTML = "Preencha todos os campos"
+    }
+   
+   window.location = "TelaLogin.html";
+
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: Nome,
+        emailServer: Email,
+        senhaServer: Senha,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location.href = "TelaLogin.html";
+          }, "2000");
+
+          limparFormulario();
+
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+
+      });
+
+    return false;
+  }
+  function PossuiCadastro(){
+    window.location = "TelaLogin.html";
+  }
+</script>

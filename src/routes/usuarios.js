@@ -20,4 +20,8 @@ router.get("/obterDados", function (req, res) {
     usuarioController.obterDados(req, res);
 });
 
+router.post("/CapturarPontuacao", function(req, res){
+    usuarioController.CapturarPontuacao(req, res);
+})
+
 module.exports = router;

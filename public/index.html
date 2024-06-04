@@ -2,195 +2,154 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/telaCadastro.css">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/telaInicial.css">
+    <title>Document</title>
 </head>
 
 <body>
-  <header class="header">
-    logo
-  </header>
-  <container class="container">
 
-    <section class="input_cadastro">
-      <h1 class="titulo-input-cadastro">CADASTRE - SE</h1>
-      <br>
-      <div class="div-inputs">
-        <section class="sessao inputs">
-          <div class="grupo-input">
-            <b> Nome:</b>
-            <input class="input nome" id="input_nome" tabindex="1">
-            <span class="span-avisos"></span>
-          </div>
-          <br>
-          <div class="grupo-input">
-            <b>Email:</b>
-            <input class="input email" id="input_email" tabindex="2">
-            <span class="span-avisos" id="span_avisoEmail"></span>
-          </div>
-          <br>
-          <div class="grupo-input">
-            <b>Senha:</b>
-            <input type="password" class="input senha" id="input_senha" tabindex="3">
-            <span class="span-avisos" id="span_avisoSenha"></span>
-          </div>
-          <br>
-          <div class="grupo-input">
-            <b>Confirmação de senha:</b>
-            <input type="password" class="input senha" id="input_confirmacaoSenha" tabindex="4">
-            <span class="span-avisos" id="span_avisoConfirmacaoSenha"></span>
-          </div>
-          <br>
-
+    <div class="container">
+        <header class="header">
+            <h1 class="titulo">PIANO</h1>
+        </header>
+        <section class="lista-de-botoes">
+            <button class="botao-pag-inicial">
+                Cadastro
+            </button>
+            <button class="botao-pag-inicial">
+                Login
+            </button>
+            <button class="botao-pag-inicial">
+                entrar
+            </button>
         </section>
-      </div>
-      <span class=" geral" id="span_avisoCampos"></span>
-
-      <button class="BotaoCadastrar" onclick="cadastrar()" tabindex="7">CADASTRE-SE</button>
-
-      <b class="PerguntaCadastro">Já possui cadastro?</b>
-
-      <br>
-      <button class="BotaoPossuiCadastro" onclick="PossuiCadastro()" tabindex="8">Fazer Login</button>
-    </section>
-    <div class="imagemCadastro">
-      <img class="ImagemPiano" src="./assets/ImagemPianoGoogle.jpg">
+        <div class="Mensagem-Inicial">
+            <div class="caixa-mensagem-saudacao">
+                <h1 class="saudacao-titulo">UMA EXPERIÊNCIA ÚNICA E INOVADORA DE REDESCOBRIR UM INSTRUMENTO TÃO
+                    APAIXONANTE</h1>
+            </div>
+        </div>
     </div>
-  </container>
 
+    <div class="sessao-sobre-piano">
+        <div class="Caracteristica-Piano">
+            <div class="Texto-Sobre-Piano">
+                <div class="titulo-sobre-piano">
+                    <h1 class="sobre">SOBRE</h1>
+                    <h1 class="o">O</h1>
+                    <h1 class="piano">PIANO</h1>
+                </div>
+                <div class="paragrafo-sobre-piano">
+                    <p class="primeiro-paragrafo-sobre">
+                        O piano é um instrumento musical acústico que produz som através da percussão de cordas por
+                        martelos acionados
+                    </p>
+                    <p class="segundo-paragrafo-sobre">
+                        Possui 88 teclas, sendo 52 brancas, as quais representam notas naturais e 36 pretas,
+                        que representam os sustenidos e bemóis
+
+                    <p class="terceiro-paragrafo-sobre">
+                        A invenção deste é atribuída a Bartolomeo Cristofori. Porém foi popularmente conhecido quando o
+                        construtor inglês Johannes Zumpe
+                        elaborou uma máquina simples e de baixo custo, conhecida como "Piano Público"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sessao-curiosidade-piano">
+        <header class="cabecalho-curiosidade">
+            <h4 class="titulo-curiosidade">CURIOSIDADES</h4>
+        </header>
+        <div class="caixa-conteudo-curiosidade">
+            <div class="carrosel-curiosidade">
+                <h1 class="titulo-qual-curiosidade">Origem do Nome</h1>
+                <div class="flip">
+                    <div class="frente1">
+
+                    </div>
+                    <div class="tras">
+                        "O nome completo do piano é "pianoforte", que vem das palavras italianas
+                        "piano" (suave) e "forte" (forte)
+                    </div>
+                </div>
+            </div>
+            <div class="carrosel-curiosidade">
+                <h1 class="titulo-qual-curiosidade">Piano em Lugares Estranhos</h1>
+                <div class="flip">
+                    <div class="frente2">
+
+                    </div>
+                    <div class="tras">há um piano no topo de uma montanha nos Estados Unidos,
+                        e outro foi encontrado na Praia da Biscayne Bay, em Miami.
+                    </div>
+                </div>
+            </div>
+            <div class="carrosel-curiosidade">
+
+                <h1 class="titulo-qual-curiosidade">Piano Subaquático</h1>
+                <div class="flip">
+                    <div class="frente3">
+
+                    </div>
+                    <div class="tras">Existe um piano submerso em uma lagoa em Florença, Oregon, EUA.
+                        Foi colocado lá por um grupo de amigos como uma brincadeira,
+                        e acabou se tornando uma atração local.
+                    </div>
+                </div>
+
+            </div>
+            <div class="carrosel-curiosidade">
+                <h1 class="titulo-qual-curiosidade">Piano no Espaço</h1>
+                <div class="flip">
+                    <div class="frente4">
+
+                    </div>
+                    <div class="tras">Em 2015, o astronauta britânico Tim Peake tocou um mini piano
+                        digital enquanto estava na Estação Espacial Internacional.
+                    </div>
+                </div>
+            </div>
+            <div class="carrosel-curiosidade">
+                <h1 class="titulo-qual-curiosidade">O Piano mais curto</h1>
+                <div class="flip">
+                    <div class="frente5">
+
+                    </div>
+                    <div class="tras">Existe um piano vertical extremamente pequeno chamado "Petit Piano",
+                        que foi fabricado na França. Ele tem apenas 85 cm de altura
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sessao-ONU">
+        <header class="cabecalho-ONU">
+            <h4 class="titulo-ONU">VOCÊ SABIA?</h4>
+        </header>
+        <div class="caixa-conteudo-ONU">
+            
+                <div class="objetivo-SaudeBemEstar">
+                    <p class="texto-SaudeEbemEstar">
+                        Você sabia que tocar piano pode ter efeitos terapêuticos, ajudando a reduzir o estresse 
+                        e a ansiedade, além de ser uma forma de meditação ativa, onde a concentração nas notas e 
+                        na música ajuda a manter a mente no presente,.
+                    <pclass="texto-SaudeEbemEstar">
+                        E essa prática envolve coordenação motora fina, leitura de partituras, memorização e interpretação musical,
+                        todos os quais estimulam o cérebro e podem melhorar a função cognitiva.
+                    </h2>
+                </div>
+           
+            <div class="imagemObjOnu">
+                <img class="imagemONU src=">
+              </div>
+        </div>
+
+    </div>
 </body>
 
 </html>
-
-<script>
-  function cadastrar() {
-    const Nome = input_nome.value
-    const Email = input_email.value;
-    const Senha = input_senha.value;
-    const ConfirmacaoDeSenha = input_confirmacaoSenha.value;
-
-    if (Nome != "" && Email != "" && Senha != "" && ConfirmacaoDeSenha != "") {
-
-      // Email terá que ter um @ e um .
-      const INDICE_ARROBA = Email.indexOf("@");
-      const INDICE_PONTO = Email.indexOf(".");
-
-
-      span_avisoEmail.style.color = 'transparent';
-      span_avisoSenha.style.color = 'transparent';
-      span_avisoConfirmacaoSenha.style.color = 'transparent';
-
-      // Senha terá que ter pelo menos: 8 caracteres, 1 número, uma letra maiúscula 
-      if (INDICE_ARROBA == -1 || INDICE_PONTO == -1) {
-        span_avisoEmail.innerHTML = "Email inválido";
-        span_avisoEmail.style.color = 'red';
-
-      } else {
-        if (Senha.length < 8) {
-          span_avisoSenha.innerHTML = "A senha deve ter pelo menos 8 caracteres";
-          span_avisoSenha.style.color = 'red';
-
-        } else {
-          let existeNumero = false;
-
-          for (let numero = 0; numero <= 9; numero++) {
-            const INDICE_NUMERO = Senha.indexOf(`${numero}`);
-
-            if (INDICE_NUMERO != -1) {
-              existeNumero = true;
-
-              numero = 10;
-            }
-          }
-
-          if (existeNumero == true) {
-
-            let existeLetraMaiuscula = false;
-            let senha_replace = Senha;
-
-            senha_replace = senha_replace.replace(/\d+/ig, "")
-
-            for (let posicao = 0; posicao < senha_replace.length; posicao++) {
-              const LETRA_MAIUSCULA = senha_replace[posicao];
-
-              if (LETRA_MAIUSCULA == LETRA_MAIUSCULA.toUpperCase()) {
-                posicao = senha_replace.length;
-                existeLetraMaiuscula = true;
-              }
-            }
-
-            if (existeLetraMaiuscula == false) {
-              span_avisoSenha.innerHTML = "A senha deve conter uma letra maiúscula";
-              span_avisoSenha.style.color = 'red';
-
-
-            } else {
-              span_avisoConfirmacaoSenha.innerHTML = "";
-
-              if (Senha != ConfirmacaoDeSenha) {
-
-                span_avisoConfirmacaoSenha.innerHTML = "As senhas não conferem";
-                span_avisoConfirmacaoSenha.style.color = 'red';
-
-              }
-            }
-          } else {
-            span_avisoSenha.innerHTML = "A senha deve conter pelo menos um número";
-            span_avisoSenha.style.color = 'red';
-
-            
-          }
-
-        }
-      }
-    } else {
-      span_avisoCampos.innerHTML = "Preencha todos os campos"
-    }
-   
-   window.location = "TelaLogin.html";
-
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: Nome,
-        emailServer: Email,
-        senhaServer: Senha,
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-          cardErro.style.display = "block";
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-          setTimeout(() => {
-            window.location.href = "TelaLogin.html";
-          }, "2000");
-
-          limparFormulario();
-
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-
-      });
-
-    return false;
-  }
-  function PossuiCadastro(){
-    window.location = "TelaLogin.html";
-  }
-</script>

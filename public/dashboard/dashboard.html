@@ -102,7 +102,8 @@
 
 <script>
     function obterDados() {
-        
+
+        CapturarPontuacao()
 
         fetch(`/usuarios/obterDados`, {
 
@@ -123,11 +124,11 @@
                     throw new Error("Erro ao obter dados");
 
 
-                } else{
+                } else {
                     return resposta.json();
                 }
 
-                
+
 
             })
 
@@ -157,5 +158,49 @@
 
             });
 
+    }
+
+    function CapturarPontuacao() {
+        var IdUsuario = sessionStorage.ID_USUARIO
+        fetch("/usuarios/CapturarPontuacao", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                IdUsuarioServer: IdUsuario,
+
+            }),
+        })
+            .then(function (resultado) {
+                console.log("resultado: ", resultado);
+
+                if (resultado.ok) {
+                    resultado.json().then(function (resultado) {
+                        resultado.reverse();
+                        atualizarGrafico(resultado);
+                    })
+
+
+                }
+            })
+            .catch(function (resultado) {
+                console.log(`#ERRO: ${resultado}`);
+
+            });
+    }
+
+    function atualizarGrafico(resultado){
+        myChart.data.datasets[0].data = []
+        myChart.data.labels = []
+        for (var posicao = 0; posicao < resultado.length; posicao++) {
+        let UltimoDado = resultado[posicao];
+        console.log(UltimoDado.Pontuacao)
+        myChart.data.datasets[0].data.push(UltimoDado.Pontuacao);
+        myChart.data.labels.push(`Tentativa  ${posicao + 1}`);
+        myChart.update();
+    }
     }
 </script>

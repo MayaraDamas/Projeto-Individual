@@ -143,8 +143,22 @@ function obterDados(req, res){
 
         });
 
- 
+}
 
+function CapturarPontuacao(req, res){
+
+   
+    var idUsuario = req.body.IdUsuarioServer;
+
+    usuarioModel.CapturarPontuacao( idUsuario)
+    .then(
+        function(resultado){
+            res.json(resultado)
+        }).catch(function (erro){
+                console.log(erro);
+                console.log ("Erro ao obter o resultado", erro);
+                res.status(500).json({error: "Erro interno do servidor"});
+        })
 }
 
  
@@ -153,5 +167,6 @@ module.exports = {
     autenticar,
     cadastrar,
     CalcularPontuacao,
-    obterDados
+    obterDados, 
+    CapturarPontuacao
 }
