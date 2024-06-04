@@ -122,8 +122,8 @@ function obterDados(req, res){
            
 
             if(resultado.length > 0){
-
-                res.json(resultado);
+                
+                res.json(resultado[0].Pontuacao);
 
             }else{
 

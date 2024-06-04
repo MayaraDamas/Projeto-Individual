@@ -44,11 +44,11 @@
                 <section class="sessao-indicadores">
                     <div class="Porcentagem-Acerto">
                         <h2 class="titulo-porcentagem-acerto">Você Acertou:</h2>
-                        <p class="conteudo-indicador" id="p_KPI_Porcentg_Acerto">1</p>
+                        <p class="conteudo-indicador" id="p_KPI_Porcentg_Acerto"></p>
                     </div>
                     <div class="Maior-numero-Pontos">
                         <h2 class="titulo-maior-pontos">Você Acertou:</h2>
-                        <p class="conteudo-indicador" id="p_KPI_Maior_Pontos">1</p>
+                        <p class="conteudo-indicador" id="p_KPI_Maior_Pontos"></p>
                     </div>
                     <div class="Menor-numero-Pontos">
                         <h2 class="titulo-menor-pontos">Você Acertou:</h2>
@@ -56,8 +56,9 @@
                     </div>
                 </section>
                 <!--Grafico de Acertos-->
+                <div class="graficos">
                 <div class="Grafico-Acertos">
-                    <h3 class="titulo-grafico">Pontuação</h3>
+                    <h3 class="titulo-grafico">Média</h3>
                     <section class="sessao-grafico-acertos">
                         <div class="graficoAcerto">
                             <canvas id="myChart" style="height: 100%; width: 80%;"></canvas>
@@ -68,11 +69,11 @@
         </div>
     </div>
     <script>
-        const labels = ['Média']
+        const labels = ['Resultado']
         const data = {
             labels: labels,
             datasets: [{
-                label: 'Quantidade Pontuação em cada partida',
+                label: 'Últimas pontuações',
                 data: [],
                 borderWidth: 1,
             }]
@@ -96,13 +97,16 @@
             data
         );
     </script>
+
+</div>
+
 </body>
 
 </html>
 
 <script>
     function obterDados() {
-
+        
         CapturarPontuacao()
 
         fetch(`/usuarios/obterDados`, {
@@ -112,44 +116,16 @@
             headers: {
 
                 "Content-Type": "application/json"
-
             }
-
         })
 
-            .then(function (resposta) {
-
-                if (!resposta.ok) {
-
-                    throw new Error("Erro ao obter dados");
-
-
-                } else {
-                    return resposta.json();
-                }
-
-
-
-            })
-
-            .then(function (data) {
-
-                console.log("Dados recebidos do servidor:", data); // Adicionado para debug
-
-
-
-                const dataset = data.map(item => item.Pontuacao);
-
-
-
-                myChart.data.labels = labels;
-
-                myChart.data.datasets[0].data = dataset;
-
-
-
-                myChart.update();
-
+            .then(function (resultado) {
+                if (resultado.ok) {
+                    resultado.json().then(function (resultado) {
+                        p_KPI_Porcentg_Acerto.innerHTML = resultado              
+                    })
+                
+                } 
             })
 
             .catch(function (erro) {

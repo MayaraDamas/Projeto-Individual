@@ -87,6 +87,8 @@
   font-size: 30px;
   /*cor*/
   color: #6B0F0F;
+
+  text-align: center;
 }
 
 .sessao-sobre-piano {
@@ -338,7 +340,6 @@
   gap: 40px;
   /*Fonte*/
   font-size: 22px;
-  /*Texto*/
-  text-align: left;
+ 
 }
 

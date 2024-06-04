@@ -15,20 +15,17 @@
             <h1 class="titulo">PIANO</h1>
         </header>
         <section class="lista-de-botoes">
-            <button class="botao-pag-inicial">
+            <button onclick="botaocadastro()" class="botao-pag-inicial">
                 Cadastro
             </button>
-            <button class="botao-pag-inicial">
-                Login
-            </button>
-            <button class="botao-pag-inicial">
+            <button onclick="botaoLogin()" class="botao-pag-inicial">
                 entrar
             </button>
         </section>
         <div class="Mensagem-Inicial">
             <div class="caixa-mensagem-saudacao">
-                <h1 class="saudacao-titulo">UMA EXPERIÊNCIA ÚNICA E INOVADORA DE REDESCOBRIR UM INSTRUMENTO TÃO
-                    APAIXONANTE</h1>
+                <h1 class="saudacao-titulo">A MÚSICA É A MELODIA DA VIDA, TECENDO EMOÇÕES E MEMÓRIAS EM CADA NOTA, 
+                    ELEVANDO O ESPÍRITO E CONECTANDO ALMAS EM UMA SINFONIA DE SENTIMENTOS</h1>
             </div>
         </div>
     </div>
@@ -81,7 +78,7 @@
                 <h1 class="titulo-qual-curiosidade">Piano em Lugares Estranhos</h1>
                 <div class="flip">
                     <div class="frente2">
-
+                        <img src="" alt="">
                     </div>
                     <div class="tras">há um piano no topo de uma montanha nos Estados Unidos,
                         e outro foi encontrado na Praia da Biscayne Bay, em Miami.
@@ -153,3 +150,14 @@
 </body>
 
 </html>
+
+<script>
+    function botaocadastro(){
+        window.location.href = "./telaCadastro.html"
+    }
+
+    function botaoLogin(){
+        window.location.href = "./TelaLogin.html"
+    }
+
+</script>

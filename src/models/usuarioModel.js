@@ -39,7 +39,7 @@ function obterDados() {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-    SELECT ROUND(AVG(Pontuacao)) AS Pontuacao FROM Pontuacao;
+    select truncate(avg(Pontuacao), 1) as Pontuacao from Pontuacao;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
