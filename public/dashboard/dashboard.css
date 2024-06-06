@@ -118,13 +118,14 @@ ul li.item-menu a .icone>i {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-left: 250px;
    
     
 }
 
 .Porcentagem-Acerto{
     /*tamanho*/
-    width: 20%;
+    width: 40%;
     height: 50%;
     /*borda*/
     border-radius: 5px;
@@ -157,9 +158,19 @@ ul li.item-menu a .icone>i {
 
 }
 
-
+.Grafico-Acertos{
+    text-align: center;
+}
 .graficoAcerto{
     /*tamanho*/
     width: 700px;
     height: 400px;
+}
+.titulo-grafico{
+    text-align: center;
+    margin-left: -350px;
+}
+
+.graficos{
+    margin-left: 150px;
 }
