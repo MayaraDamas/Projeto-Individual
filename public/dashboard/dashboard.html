@@ -41,57 +41,74 @@
 
         <div class="caixa-conteudo">
             <div class="sessao-conteudo-dashboard">
-                <section class="sessao-indicadores">
-                    <div class="Porcentagem-Acerto">
-                        <h2 class="titulo-porcentagem-acerto">A sua média foi:</h2>
-                        <p class="conteudo-indicador" id="p_KPI_Porcentg_Acerto"></p>
-                    </div>
-    
-                </section>
                 <!--Grafico de Acertos-->
                 <div class="graficos">
-                <div class="Grafico-Acertos">
-                    <h3 class="titulo-grafico">Pontuação por Tentativa</h3>
-                    <section class="sessao-grafico-acertos">
-                        <div class="graficoAcerto">
-                            <canvas id="myChart" style="height: 100%; width: 80%;"></canvas>
-                        </div>
-                    </section>
+                    <div class="Grafico-Acertos">
+                        <h3 class="titulo-grafico">Pontuação por Tentativa</h3>
+                        <br>
+                        <section class="sessao-grafico-acertos">
+                            <div class="graficoAcerto">
+                                <canvas id="myChart" style="height: 100%; width: 80%;"></canvas>
+                            </div>
+                        </section>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script>
-        const labels = ['Resultado']
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'Últimas pontuações',
-                data: [],
-                borderWidth: 1,
-            }]
-        };
+        <section class="sessao-indicadores">
+            <div class="container-Indicador">
+                <div class="Saudacao-Usuario indicador">
+                    <h2 class="titulo-Indicador">Olá (nome):</h2>
+                    <p class="conteudo-indicador" id="p_KPI_Saudacao_Usuario"></p>
+                </div>
+                <div class="Media-Usuario indicador">
+                    <h2 class="titulo-Indicador">A sua média foi:</h2>
+                    <p class="conteudo-indicador" id="p_KPI_Porcentg_Acerto"></p>
+                </div>
+                <div class="Maior-Pontuacao-Usuario indicador">
+                    <h2 class="titulo-Indicador">Maior Pontuação:</h2>
+                    <p class="conteudo-indicador" id="p_KPI_Maior_Pontuacao"></p>
+                </div>
+                <div class="Menor-Pontuacao-Usuario indicador">
+                    <h2 class="titulo-Indicador">Menor Pontuação:</h2>
+                    <p class="conteudo-indicador" id="p_KPI_Menor_P"></p>
+                </div>
+            </div>
+        </section>
+        <script>
+            const labels = ['Resultado']
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Últimas pontuações',
+                    data: [],
+                    backgroundColor: [
+                        'rgba: (0000)'
+                    ],
+                    borderWidth: 1,
+                }]
+            };
 
-        const config = {
-            type: 'bar',
-            data: data,
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
                     }
                 }
-            }
-        };
+            };
 
-        var myChart = new Chart(
-            document.getElementById('myChart'),
-            config,
-            data
-        );
-    </script>
+            var myChart = new Chart(
+                document.getElementById('myChart'),
+                config,
+                data
+            );
+        </script>
 
-</div>
+    </div>
 
 </body>
 
@@ -99,7 +116,7 @@
 
 <script>
     function obterDados() {
-        
+
         CapturarPontuacao()
 
         fetch(`/usuarios/obterDados`, {
@@ -115,10 +132,10 @@
             .then(function (resultado) {
                 if (resultado.ok) {
                     resultado.json().then(function (resultado) {
-                        p_KPI_Porcentg_Acerto.innerHTML = resultado              
+                        p_KPI_Porcentg_Acerto.innerHTML = resultado
                     })
-                
-                } 
+
+                }
             })
 
             .catch(function (erro) {
@@ -161,15 +178,15 @@
             });
     }
 
-    function atualizarGrafico(resultado){
+    function atualizarGrafico(resultado) {
         myChart.data.datasets[0].data = []
         myChart.data.labels = []
         for (var posicao = 0; posicao < resultado.length; posicao++) {
-        let UltimoDado = resultado[posicao];
-        console.log(UltimoDado.Pontuacao)
-        myChart.data.datasets[0].data.push(UltimoDado.Pontuacao);
-        myChart.data.labels.push(`Tentativa  ${posicao + 1}`);
-        myChart.update();
-    }
+            let UltimoDado = resultado[posicao];
+            console.log(UltimoDado.Pontuacao)
+            myChart.data.datasets[0].data.push(UltimoDado.Pontuacao);
+            myChart.data.labels.push(`Tentativa  ${posicao + 1}`);
+            myChart.update();
+        }
     }
 </script>
