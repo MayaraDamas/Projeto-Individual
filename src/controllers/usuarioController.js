@@ -161,6 +161,21 @@ function CapturarPontuacao(req, res){
         })
 }
 
+function PontuacaoMaior(req, res){
+
+   
+    var idUsuario = req.body.IdUsuarioServer;
+
+    usuarioModel.PontuacaoMaior( idUsuario)
+    .then(
+        function(resultado){
+            res.json(resultado)
+        }).catch(function (erro){
+                console.log(erro);
+                console.log ("Erro ao obter o resultado", erro);
+                res.status(500).json({error: "Erro interno do servidor"});
+        })
+}
  
 
 module.exports = {
@@ -168,5 +183,6 @@ module.exports = {
     cadastrar,
     CalcularPontuacao,
     obterDados, 
-    CapturarPontuacao
+    CapturarPontuacao,
+    PontuacaoMaior
 }

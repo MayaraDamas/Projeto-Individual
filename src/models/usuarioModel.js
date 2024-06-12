@@ -53,11 +53,20 @@ function CapturarPontuacao(idUsuario){
     return database.executar(instrucaoSql);
 }
 
+function PontuacaoMaior(idUsuario){
+    var instrucaoSql = `
+    select max(Pontuacao) AS Maior_Pontuacao from Pontuacao where fkUsuario = ${idUsuario} ;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
     autenticar,
     cadastrar,
     CalcularPontuacao,
     obterDados,
-    CapturarPontuacao
+    CapturarPontuacao,
+    PontuacaoMaior
 };

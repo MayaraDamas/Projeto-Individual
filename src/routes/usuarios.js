@@ -22,6 +22,11 @@ router.get("/obterDados", function (req, res) {
 
 router.post("/CapturarPontuacao", function(req, res){
     usuarioController.CapturarPontuacao(req, res);
-})
+});
+
+router.post("/PontuacaoMaior", function(req, res){
+    usuarioController.PontuacaoMaior(req, res);
+});
+
 
 module.exports = router;

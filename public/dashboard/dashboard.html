@@ -189,4 +189,38 @@
             myChart.update();
         }
     }
+
+function PontuacaoMaior(){
+
+    var IdUsuario = sessionStorage.ID_USUARIO
+        fetch("/usuarios/PontuacaoMaior", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                IdUsuarioServer: IdUsuario,
+
+            }),
+        })
+            .then(function (resultado) {
+                console.log("resultado: ", resultado);
+
+                if (resultado.ok) {
+                    resultado.json().then(function (resultado) {
+                        resultado.reverse();
+                        let MaiorPontuacao = json[0].Maior_Pontuacao
+                        p_KPI_Maior_Pontuacao.innerHTML = `${MaiorPontuacao}`
+                    })
+
+
+                }
+            })
+            .catch(function (resultado) {
+                console.log(`#ERRO: ${resultado}`);
+
+            });
+    }
 </script>
