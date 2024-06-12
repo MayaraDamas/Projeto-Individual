@@ -28,5 +28,9 @@ router.post("/PontuacaoMaior", function(req, res){
     usuarioController.PontuacaoMaior(req, res);
 });
 
+router.post("/PontuacaoMenor", function(req, res){
+    usuarioController.PontuacaoMenor(req, res);
+});
+
 
 module.exports = router;

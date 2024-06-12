@@ -10,7 +10,7 @@
     <title>Document</title>
 </head>
 
-<body onload="obterDados()">
+<body onload="obterDados(), PontuacaoMaior(), PontuacaoMenor(), InserirDados()">
     <div class="dashboard-container">
         <nav class="menu-lateral">
             <div class="expandir">
@@ -58,7 +58,7 @@
         <section class="sessao-indicadores">
             <div class="container-Indicador">
                 <div class="Saudacao-Usuario indicador">
-                    <h2 class="titulo-Indicador">Olá (nome):</h2>
+                    <h2 class="titulo-Indicador">Olá:</h2>
                     <p class="conteudo-indicador" id="p_KPI_Saudacao_Usuario"></p>
                 </div>
                 <div class="Media-Usuario indicador">
@@ -209,10 +209,12 @@ function PontuacaoMaior(){
                 console.log("resultado: ", resultado);
 
                 if (resultado.ok) {
-                    resultado.json().then(function (resultado) {
-                        resultado.reverse();
+                    resultado.json().then(json => {
+                            console.log(json);
+                            console.log(JSON.stringify(json));
+
                         let MaiorPontuacao = json[0].Maior_Pontuacao
-                        p_KPI_Maior_Pontuacao.innerHTML = `${MaiorPontuacao}`
+                        p_KPI_Maior_Pontuacao.innerHTML = MaiorPontuacao
                     })
 
 
@@ -223,4 +225,46 @@ function PontuacaoMaior(){
 
             });
     }
+
+    function PontuacaoMenor(){
+
+var IdUsuario = sessionStorage.ID_USUARIO
+    fetch("/usuarios/PontuacaoMenor", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            IdUsuarioServer: IdUsuario,
+
+        }),
+    })
+        .then(function (resultado) {
+            console.log("resultado: ", resultado);
+
+            if (resultado.ok) {
+                resultado.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                    let MenorPontuacao = json[0].Menor_Pontuacao
+                    p_KPI_Menor_P.innerHTML = MenorPontuacao
+                })
+
+
+            }
+        })
+        .catch(function (resultado) {
+            console.log(`#ERRO: ${resultado}`);
+
+        });
+}
+
+function InserirDados(){
+    let NomeUsuario = sessionStorage.NOME_USUARIO
+
+    p_KPI_Saudacao_Usuario.innerHTML = NomeUsuario
+}
 </script>

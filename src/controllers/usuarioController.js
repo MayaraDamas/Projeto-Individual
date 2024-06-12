@@ -177,6 +177,22 @@ function PontuacaoMaior(req, res){
         })
 }
  
+function PontuacaoMenor(req, res){
+
+   
+    var idUsuario = req.body.IdUsuarioServer;
+
+    usuarioModel.PontuacaoMenor( idUsuario)
+    .then(
+        function(resultado){
+            res.json(resultado)
+        }).catch(function (erro){
+                console.log(erro);
+                console.log ("Erro ao obter o resultado", erro);
+                res.status(500).json({error: "Erro interno do servidor"});
+        })
+}
+ 
 
 module.exports = {
     autenticar,
@@ -184,5 +200,6 @@ module.exports = {
     CalcularPontuacao,
     obterDados, 
     CapturarPontuacao,
-    PontuacaoMaior
+    PontuacaoMaior,
+    PontuacaoMenor
 }
